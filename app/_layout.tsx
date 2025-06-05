@@ -1,7 +1,7 @@
 import '../global.css';
 
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { router, Slot, usePathname } from 'expo-router';
+import { router, Slot, Stack, usePathname } from 'expo-router';
 import { useEffect } from 'react';
 import { Linking } from 'react-native';
 
@@ -20,7 +20,8 @@ function LayoutWrapper() {
         console.log('Redirecting to /auth/welcome');
 
         // this does not work
-        router.replace('/auth/welcome');
+        // router.replace('/auth/welcome');
+        router.replace({ pathname: '/auth/[screen]', params: { screen: 'welcome' } });
 
         // this does work
         // Linking.openURL('exp://localhost:8081/--/auth/welcome');
