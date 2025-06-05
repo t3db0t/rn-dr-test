@@ -3,7 +3,6 @@
     "name": "rn-dr-test",
     "slug": "rn-dr-test",
     "version": "1.0.0",
-
     "scheme": "rn-dr-test",
     "web": {
       "bundler": "metro",
@@ -21,28 +20,34 @@
     ],
     "experiments": {
       "typedRoutes": true,
-
       "tsconfigPaths": true
     },
-
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-
     "userInterfaceStyle": "light",
-
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.t3db0t.rndrtest"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "package": "com.t3db0t.rndrtest"
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "0f0ce681-ed60-4c91-9c0d-7383b90217b2"
       }
     }
   }

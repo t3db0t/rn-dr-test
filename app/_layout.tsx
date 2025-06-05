@@ -1,20 +1,42 @@
 import '../global.css';
 
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { Stack } from 'expo-router';
+import { router, Slot, usePathname } from 'expo-router';
+import { useEffect } from 'react';
+import { Linking } from 'react-native';
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
   initialRouteName: '(drawer)',
 };
 
+function LayoutWrapper() {
+  const pathname = usePathname();
+  console.log('LayoutWrapper pathname', pathname);
+
+  useEffect(() => {
+    if (pathname === '/') {
+      const timeout = setTimeout(() => {
+        console.log('Redirecting to /auth/welcome');
+
+        // this does not work
+        router.replace('/auth/welcome');
+
+        // this does work
+        // Linking.openURL('exp://localhost:8081/--/auth/welcome');
+      }, 100); // small delay to ensure router is ready
+
+      return () => clearTimeout(timeout);
+    }
+  }, [pathname]);
+
+  return <Slot />;
+}
+
 export default function RootLayout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <Stack>
-        <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ title: 'Modal', presentation: 'modal' }} />
-      </Stack>
+      <LayoutWrapper />
     </GestureHandlerRootView>
   );
 }
