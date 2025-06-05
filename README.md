@@ -5,14 +5,18 @@ In `app/_layout.tsx`, I would use an auth provider to route to the auth/welcome 
 
 # Problem
 
-With every routing method I've tried (`router.replace`, `router.push`, `<Link href="/auth/login">`), `[screen].tsx` shows empty params.
+With every routing method I've tried:
+- `router.replace({ pathname: '/auth/[screen]', params: { screen: 'welcome' } });` (or push, etc)
+- `<Link href="/auth/login">`)
 
-However, if I try deep linking, either through:
+`[screen].tsx` shows empty params. Every time.
+
+**However**, if I try deep linking, either through:
 
 1. `Linking.openURL('exp://localhost:8081/--/auth/welcome');`
 2. `xcrun simctl openurl booted exp://localhost:8081/--/auth/register`
 
-The route _does_ work as expected and shows the expected `screen` parameter.
+The route _does_ work and shows the expected `screen` parameter.
 
 I have tried clearing the cache and starting everything from scratch, etc., and the `_sitemap` shows:
 
