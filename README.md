@@ -1,4 +1,5 @@
 # Goal
+
 I want to use a dynamic route (`/auth/[screen].tsx`) to display auth screens with different states (welcome, login, register, etc.).
 
 In `app/_layout.tsx`, I would use an auth provider to route to the auth/welcome screen when not logged in (`router.replace('/auth/welcome');`).
@@ -6,6 +7,7 @@ In `app/_layout.tsx`, I would use an auth provider to route to the auth/welcome 
 # Problem
 
 With every routing method I've tried:
+
 - `router.replace({ pathname: '/auth/[screen]', params: { screen: 'welcome' } });` (or push, etc)
 - `<Link href="/auth/login">`)
 
@@ -22,5 +24,7 @@ I have tried clearing the cache and starting everything from scratch, etc., and 
 
 - `auth/[screen].tsx`
 - `+not-found.tsx`
+
+I also tried using a `<Stack>` instead of the `<Slot>` but same results (except it shows a slide-in navigation animation).
 
 What am I missing?
